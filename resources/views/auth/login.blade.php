@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('auth.base')
+
+@section('content')
     <form action="{{ route('login') }}" method="POST">
         @csrf
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input class="form-control" id="email" name="email" type="email" placeholder="E-mail">
+        @error('email')
+            <div class="bg-white text-primary-red p-4 rounded mb-4">
+                {{ $message }}
+            </div>
+        @enderror
+        <div class="flex flex-col">
+            <label class="block text-sm font-medium text-white" for="email">Email</label>
+            <div class="nt-1">
+                <input
+                    class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bloxk w-full sm:text-sm border-gray-300 rounded-md"
+                    id="email" name="email" type="email" placeholder="Digite seu e-mail">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+        <div class="flex flex-col mt-4">
+            <label class="block text-sm font-medium text-white" for="password">Senha</label>
+            <input
+                class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bloxk w-full sm:text-sm border-gray-300 rounded-md"
+                id="password" name="password" type="password" placeholder="Digite sua senha">
         </div>
-        <button class="btn btn-primary" type="submit">Login</button>
+        <button class="mt-4 p-2 bg-white text-black rounded-lg w-full">Entrar</button>
     </form>
-</body>
-</html>
+@endsection
