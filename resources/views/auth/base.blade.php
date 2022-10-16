@@ -10,10 +10,13 @@
 
 <body>
 
-    <div class="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-tr from-primary-dark to-primary-light">
-        <img class="h-30 mb-8" src="{{ asset('logo/logo.png') }}" alt="Logo">
+    <div class="dark:bg-gray-800 min-h-screen w-full flex flex-col items-center justify-center">
+        <img class="h-30 mt-5" src="{{ asset('logo/logo.png') }}" alt="Logo">
+        <h1 class="mb-10 text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-3xl dark:text-white">
+            Sweepstake
+        </h1>
 
-        <div class="flex flex-col rounded border border-solid border-white p-4 w-[280px]">
+        <div class="w-full mb-5">
             @yield('content')
         </div>
     </div>
