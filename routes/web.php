@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SweepstakesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+Route::resource('', SweepstakesController::class)
+    ->middleware('auth')
+    ->names('sweepstakes')
+    ->parameters([
+        '' => 'sweepstake'
+    ]);
