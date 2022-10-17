@@ -49,56 +49,14 @@
                                 required="">
                         </div>
                         <button type="submit"
-                            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Cadastrar</button>
+                            class="w-full px-5 py-2.5 text-center rounded-lg border border-transparent bg-purple-600 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1">Cadastrar</button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Já tem uma conta? <a href="{{ route('login') }}"
-                                class="font-medium text-primary-600 hover:underline dark:text-primary-500">Entrar</a>
+                                class="font-medium text-purple-600 hover:underline dark:text-purple-500">Entrar</a>
                         </p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-
-
-    {{-- <form action="{{ route('register') }}" method="POST">
-        @csrf
-        @if ($errors->any())
-            <div class="bg-white border border-solid text-primary-red p-4 rounded mb-4">
-                @foreach ($errors->all() as $error)
-                    <span>{{ $error }}</span>
-                @endforeach
-            </div>
-        @endif
-        <div class="flex flex-col">
-            <label class="block text-sm font-medium text-white" for="name">Nome</label>
-            <div class="nt-1">
-                <input value="{{old('name')}}"
-                    class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bloxk w-full sm:text-sm border-gray-300 rounded-md"
-                    id="name" name="name" type="name" placeholder="Digite seu nome">
-            </div>
-        </div>
-        <div class="flex flex-col mt-4">
-            <label class="block text-sm font-medium text-white" for="email">Email</label>
-            <div class="nt-1">
-                <input value="{{old('email')}}"
-                    class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bloxk w-full sm:text-sm border-gray-300 rounded-md"
-                    id="email" name="email" type="email" placeholder="Digite seu e-mail">
-            </div>
-        </div>
-        <div class="flex flex-col mt-4">
-            <label class="block text-sm font-medium text-white" for="password">Senha</label>
-            <input
-                class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bloxk w-full sm:text-sm border-gray-300 rounded-md"
-                id="password" name="password" type="password" placeholder="Digite sua senha">
-        </div>
-        <div class="flex flex-col mt-4">
-            <label class="block text-sm font-medium text-white" for="password_confirmation">Confirme sua senha</label>
-            <input
-                class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bloxk w-full sm:text-sm border-gray-300 rounded-md"
-                id="password_confirmation" name="password_confirmation" type="password_confirmation"
-                placeholder="Digite sua senha">
-        </div>
-        <button class="mt-4 p-2 bg-white text-black rounded-lg w-full">Cadastrar</button>
-    </form> --}}
 @endsection

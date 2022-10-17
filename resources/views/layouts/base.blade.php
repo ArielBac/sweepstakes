@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/menu.js'])
-    {{-- <script defer src="{{ asset("js/menu.js") }}" ></script>
-    <script defer src="{{ asset("js/app.js") }}" ></script> --}}
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/menu.js']) --}}
+    <link href="{{ asset("css/app.css") }}" rel="stylesheet">
+    <script defer src="{{ asset("js/menu.js") }}" ></script>
+    <script defer src="{{ asset("js/app.js") }}" ></script>
 
 </head>
 <body class="h-full">
