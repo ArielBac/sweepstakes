@@ -17,7 +17,19 @@ class SweepstakesController extends Controller
      */
     public function index()
     {
-        dd(route('sweepstakes.edit', '86aab4e9-78a3-4a5e-84f9-896c941c2451'));
+        $sweepstakes = Sweepstake::where('user_id', Auth::user()->id)
+            ->orderBy('created_at')
+            ->get();
+        $near_sweepstakes = Sweepstake::where('user_id', Auth::user()->id)
+            ->whereDate('end_date', '>', now())
+            ->limit(4)
+            ->orderBy('end_date', 'asc')
+            ->get();
+
+        return response()->view('sweepstakes.index', [
+            'near_sweepstakes' => $near_sweepstakes,
+            'sweepstakes' => $sweepstakes,
+        ]);
     }
 
     /**
@@ -55,7 +67,9 @@ class SweepstakesController extends Controller
             ->where('user_id', Auth::user()->id)
             ->first();
 
-        dd($sweepstake->all());
+        return response()->view('sweepstakes.show', [
+            'sweepstake' => $sweepstake
+        ]);
     }
 
     /**
@@ -97,10 +111,18 @@ class SweepstakesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $sweepstake = Sweepstake::where('id', $id)
+            ->where('user_id', Auth::user()->id)
+            ->first();
+
+        if ($sweepstake) {
+            $sweepstake->delete();
+        }
+
+        return redirect()->route('sweepstakes.index');
     }
 }

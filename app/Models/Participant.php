@@ -16,6 +16,10 @@ class Participant extends Model
         'awarded_at',
     ];
 
+    protected $dates = [
+        'awarded_at',
+    ];
+
     public function sweepstake()
     {
         return $this->belongsTo(Sweepstake::class);
