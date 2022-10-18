@@ -837,6 +837,13 @@ select {
 .w-0 {
   width: 0px;
 }
+.w-1 {
+  width: 0.25rem;
+}
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .min-w-0 {
   min-width: 0px;
 }
