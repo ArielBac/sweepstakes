@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SweepstakesUpdateRequest extends FormRequest
+class SweepstakesParticipantStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class SweepstakesUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->sweepstake->user_id = $this->user()->id;
+        return true;
     }
 
     /**
@@ -24,19 +24,16 @@ class SweepstakesUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'number_of_winners' => 'required|numeric',
-            'end_date' => 'required|date_format:Y-m-d',
+            'name' => 'required|string|max:255',
+            'email' => "required|string|email|max:255|unique:participants,email,NULL,id,sweepstake_id,{$this->sweepstake->id}",
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => 'Este campo é obrigatório',
-            'date_format' => 'Formato inválido de data',
-            'numeric' => 'Você deve enviar um número',
+            'required' => 'Este campo é obrigatório.',
+            'unique' => 'Você já se inscreveu com este e-mail neste sorteio.',
         ];
     }
 }

@@ -20,3 +20,6 @@ Route::resource('', SweepstakesController::class)
     ->parameters([
         '' => 'sweepstake'
     ]);
+
+Route::get('register/{sweepstake}', [SweepstakesController::class, 'register'])->name('sweepstake.register');
+Route::post('register/{sweepstake}', [SweepstakesController::class, 'storeParticipant'])->name('sweepstake.storeParticipant');

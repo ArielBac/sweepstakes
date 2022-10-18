@@ -19,6 +19,13 @@
             </a>
         </div>
 
+        <div class="mt-4 flex sm:mt-0 sm:ml-4">
+            <a href="#" type="button"
+                class="order-0 inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1 sm:ml-3">
+                Sortear
+            </a>
+        </div>
+
     </div>
     <div class="mt-6 px-4 sm:px-6 lg:px-8">
         <h2 class="text-sm font-medium text-gray-900">Estatisticas</h2>

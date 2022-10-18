@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SweepstakesParticipantStoreRequest;
 use App\Http\Requests\SweepstakesStoreRequest;
 use App\Http\Requests\SweepstakesUpdateRequest;
 use App\Models\Sweepstake;
@@ -80,6 +81,7 @@ class SweepstakesController extends Controller
      */
     public function edit($id)
     {
+        // Essa validação pode ser feita no authorization do form request
         $sweepstake = Sweepstake::where('id', $id)
             ->where('user_id', Auth::user()->id)
             ->first();
@@ -96,12 +98,9 @@ class SweepstakesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(SweepstakesUpdateRequest $request, $id)
+    public function update(SweepstakesUpdateRequest $request, Sweepstake $sweepstake)
     {
-        $sweepstake = Sweepstake::where('id', $id)
-            ->where('user_id', Auth::user()->id)
-            ->first();
-
+        // A validação do id está sendo feita no athorization do form request
         $sweepstake->update($request->all());
 
         return redirect()->route('sweepstakes.show', $sweepstake->id);
@@ -124,5 +123,29 @@ class SweepstakesController extends Controller
         }
 
         return redirect()->route('sweepstakes.index');
+    }
+
+    /**
+     * @param Sweepstake $sweepstake
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Sweepstake $sweepstake)
+    {
+        return response()->view('sweepstakes.register', [
+            'sweepstake' => $sweepstake
+        ]);
+    }
+
+    /**
+     * @param SweepstakesParticipantStoreRequest $request
+     * @param Sweepstake $sweepstake
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function storeParticipant(SweepstakesParticipantStoreRequest $request, Sweepstake $sweepstake)
+    {
+        $sweepstake->participants()->create($request->all());
+
+        return redirect()->back()
+            ->with('success', 'Cadastro realizado com sucesso!');
     }
 }

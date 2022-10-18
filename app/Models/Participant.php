@@ -9,7 +9,7 @@ class Participant extends Model
 {
     use HasFactory;
 
-    protected $fillablele = [
+    protected $fillable = [
         'sweepstake_id',
         'name',
         'email',
