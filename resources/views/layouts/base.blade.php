@@ -7,7 +7,7 @@
     <link href="{{ asset("css/app.css") }}" rel="stylesheet">
     <script defer src="{{ asset("js/menu.js") }}" ></script>
     <script defer src="{{ asset("js/app.js") }}" ></script>
-
+    <title>Sweepstake @yield('title')</title>
 </head>
 <body class="h-full">
 <div class="min-h-full" x-data>

@@ -35,4 +35,9 @@ class Sweepstake extends Model
     {
         return $this->hasMany(Participant::class);
     }
+
+    public function winnersCount()
+    {
+        return $this->participants()->whereNotNull('awarded_at')->count();
+    }
 }

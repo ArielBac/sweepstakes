@@ -23,3 +23,4 @@ Route::resource('', SweepstakesController::class)
 
 Route::get('register/{sweepstake}', [SweepstakesController::class, 'register'])->name('sweepstake.register');
 Route::post('register/{sweepstake}', [SweepstakesController::class, 'storeParticipant'])->name('sweepstake.storeParticipant');
+Route::get('{sweepstake}/draw', [SweepstakesController::class, 'draw'])->name('sweepstake.draw');

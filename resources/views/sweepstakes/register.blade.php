@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script defer src="{{ asset('js/app.js') }}"></script>
-
+    <title>Sweepstake | Registrar</title>
 </head>
 
 <body class="h-full">
     <div class="min-h-full" x-data>
         <div class="bg-white">
-
             <div
                 class="flex flex-col mx-auto mt-14 max-w-2xl sm:mt-16 lg:col-span-3 lg:row-span-2 lg:row-end-2 lg:mt-16 lg:max-w-2xl">
 
@@ -83,11 +82,7 @@
                         </button>
                     </div>
                 </form>
-
-
             </div>
-
-
         </div>
     </div>
 </body>

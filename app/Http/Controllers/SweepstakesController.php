@@ -8,6 +8,8 @@ use App\Http\Requests\SweepstakesUpdateRequest;
 use App\Models\Sweepstake;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WinnerMail;
 
 class SweepstakesController extends Controller
 {
@@ -147,5 +149,40 @@ class SweepstakesController extends Controller
 
         return redirect()->back()
             ->with('success', 'Cadastro realizado com sucesso!');
+    }
+
+    /**
+     * @param Sweepstake $sweepstake
+     * @return \Illuminate\Http\Response
+     */
+    public function draw(Sweepstake $sweepstake)
+    {
+        if ($sweepstake->user_id === Auth::user()->id) {
+            // Para acessar o banco de dados mais de uma vez
+            $winnersCount = $sweepstake->winnersCount();
+
+            if ($winnersCount < $sweepstake->number_of_winners) {
+
+                $number_of_winners = $sweepstake->number_of_winners - $winnersCount;
+
+                $winners = $sweepstake->participants()
+                    ->whereNull('awarded_at')
+                    ->inRandomOrder()
+                    ->limit($number_of_winners)->get();
+
+                // O use ($sweepstake) é para a variável ficar disponível dentro do closure
+                $winners->each(function ($winner) use ($sweepstake) {
+                    $winner->update(['awarded_at' => now()]);
+
+                    Mail::to($winner->email)
+                        // Email vai ser enviado usando fila
+                        ->queue(new WinnerMail($sweepstake));
+                });
+            } else {
+                $winners = $sweepstake->participants()->whereNotNull('awarded_at')->get();
+            }
+
+            return response()->view('sweepstakes.winners',['winners' => $sweepstake->participants()->whereNotNull('awarded_at')->get()]);
+        }
     }
 }
