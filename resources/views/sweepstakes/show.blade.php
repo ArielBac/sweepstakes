@@ -7,27 +7,25 @@
         <div class="min-w-0 flex-1">
             <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">{{ $sweepstake->title }}</h1>
         </div>
-
         <div class="mt-4 flex sm:mt-0 sm:ml-4">
             <a href="{{ route('sweepstakes.index') }}"
-                class=" sm:order-0 order-1 ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:ml-0">
+                class="w-24 order-0 inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:ml-3">
                 Voltar
             </a>
         </div>
         <div class="mt-4 flex sm:mt-0 sm:ml-4">
             <a href="{{ route('sweepstakes.edit', $sweepstake->id) }}" type="button"
-                class="order-0 inline-flex items-center rounded-md border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1 sm:ml-3">
+                class="w-24  order-0 inline-flex items-center justify-center  rounded-md border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1 sm:ml-3">
                 Editar
             </a>
         </div>
 
         <div class="mt-4 flex sm:mt-0 sm:ml-4">
             <a href="{{ route('sweepstake.draw', $sweepstake->id) }}" type="button"
-                class="order-0 inline-flex items-center rounded-md border border-transparent bg-pink-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 sm:order-1 sm:ml-3">
+                class="w-24  order-0 inline-flex items-center justify-center  rounded-md border border-transparent bg-pink-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 sm:order-1 sm:ml-3">
                 Sortear
             </a>
         </div>
-
     </div>
     <div class="mt-6 px-4 sm:px-6 lg:px-8">
         <h2 class="text-sm font-medium text-gray-900">Estatisticas</h2>
@@ -93,12 +91,18 @@
             @foreach ($sweepstake->participants as $participant)
                 <li>
                     <a href="#" class="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
-                        <span class="flex items-center space-x-3 truncate">
-                            <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-pink-600" aria-hidden="true"></span>
-                            <span class="truncate text-sm font-medium leading-6">
-                                {{ $participant->name }}
-                                <span class="truncate font-normal text-gray-500">{{ $participant->email }}</span>
-                            </span>
+                        <span class="flex  space-x-3 truncate">
+                            <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-pink-600 mt-2" aria-hidden="true"></span>
+                            <div class="flex flex-col">
+                                <span class="truncate font-medium leading-6">
+                                    {{ $participant->name }}
+                                </span>
+                                <span class="truncate text-sm text-gray-500">{{ $participant->email }}</span>
+                                @if ($participant->awarded_at)
+                                    <span class="truncate text-sm text-gray-500">Premiado dia:
+                                        {{ $participant->awarded_at->format('d/m/Y') }}</span>
+                                @endif
+                            </div>
                         </span>
                     </a>
                 </li>

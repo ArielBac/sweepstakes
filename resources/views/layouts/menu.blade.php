@@ -63,7 +63,7 @@
                             Home
                         </a>
 
-                        <a href="#"
+                        {{-- <a href="#"
                            class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <!-- Heroicon name: outline/bars-4 -->
                             <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6"
@@ -73,7 +73,7 @@
                                       d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"/>
                             </svg>
                             Perfil
-                        </a>
+                        </a> --}}
 
                     </div>
 
@@ -107,7 +107,7 @@
                     Home
                 </a>
 
-                <a href="#"
+                {{-- <a href="#"
                    class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                     <!-- Heroicon name: outline/bars-4 -->
                     <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6"
@@ -117,7 +117,7 @@
                               d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"/>
                     </svg>
                     Perfil
-                </a>
+                </a> --}}
 
             </div>
         </nav>

@@ -182,7 +182,10 @@ class SweepstakesController extends Controller
                 $winners = $sweepstake->participants()->whereNotNull('awarded_at')->get();
             }
 
-            return response()->view('sweepstakes.winners',['winners' => $sweepstake->participants()->whereNotNull('awarded_at')->get()]);
+            return response()->view('sweepstakes.winners',[
+                'winners' => $sweepstake->participants()->whereNotNull('awarded_at')->get(),
+                'sweepstake' => $sweepstake,
+            ]);
         }
     }
 }

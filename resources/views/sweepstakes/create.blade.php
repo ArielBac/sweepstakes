@@ -8,7 +8,7 @@
             <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">Criar Sorteio</h1>
         </div>
         <div class="mt-4 flex sm:mt-0 sm:ml-4">
-            <a href="{{ route('sweepstakes.index') }}"
+            <a href="{{ redirect()->back()->getTargetUrl() }}"
                 class="order-0 inline-flex items-center rounded-md border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1 sm:ml-3">
                 Voltar
             </a>
@@ -83,8 +83,8 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
                         <button type="submit"
-                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                            Save
+                            class="inline-flex justify-center rounded-md border border-transparent bg-pink-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                            Salvar
                         </button>
                     </div>
                 </div>
